@@ -1,17 +1,20 @@
 import React, { useState } from "react";
 
 const Message = () => {
-  const [message, setMessage] = useState("");
+  const [messageObj, setMessage] = useState({ message: "" });
   return (
     <div>
       <input
         type="text"
-        value={message}
+        value={messageObj.message}
         placeholder="Enter a message"
-        onChange={(e) => setMessage(e.target.value)}
+        onChange={(e) => {
+          const newMessageObj = { message: e.target.value };
+          setMessage(newMessageObj); // Now it works
+        }}
       />
       <p>
-        <strong>{message}</strong>
+        <strong>{messageObj.message}</strong>
       </p>
     </div>
   );
